@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ensemble</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+      .container {
+        width: auto;
+        padding-top: 10px;
+      }
+      h2 {color: red;}
+      #tweet {
+        max-width: 500;
+      }
+
+      body {
+        background-color: #eee
+      }
+      nav {
+
+        -webkit-box-shadow: 0 6px 4px -4px #aaa;
+        -moz-box-shadow: 0 6px 4px -4px #aaa;
+        box-shadow: 0 6px 4px -4px #aaa;
+
+        background-color: white
+      }
+      .card {
+        background-color: white
+      }
+      .card-title {
+        padding: 8px;
+        font-size: 18px
+      }
+      .card-body {
+        padding: 14px;
+        font-size: 12px
+      }
+      .card-link {
+        padding: 8px;
+        font-size: 14px
+      }
+      #score {
+        padding: 12px;
+        text-align: center;
+      }
+    </style>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-white fixed-top">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/" style="color:#4286f4"><b>ENSEMBLE</b></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <form class="navbar-form navbar-left" action="/test" method="post" role="search">
+            <div class="form-group">
+              <select name="stock" class="form-control">
+                <option value="BOB">Bank of Baroda</option>
+                <option value="Colgate">Colgate</option>
+                <option value="NIFTY">NIFTY</option>
+                <option value="JSW">JSW steel</option>
+                <option value="Oracle">Oracle</option>
+                <option value="Bosch">Bosch</option>
+                <option value="REL">Reliance</option>
+              </select>
+            </div>
+            <button type="submit" value="submit" class="btn btn-default">View Forecast</button>
+          </form>
+          <ul class="nav navbar-nav">
+            <li><a href="{{ url_for('tweet') }}">Tweets</a></li>
+            <li><a href="{{ url_for('news', name=stock) }}">News</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <!--<li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>-->
+          </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+    <div class="container">
+<!--
+      <h2>This is part of my base template</h2>
+-->
+      <br>
+      {% block content %}{% endblock %}
+      <br>
+<!--
+      <h2>This is part of my base template</h2>
+-->
+    </div>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

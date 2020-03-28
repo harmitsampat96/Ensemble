@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block content %}
+<!--
+  <h3> This is the start of my child template</h3>
+-->
+  <h1>Market forecast: <strong>{{ stock }}</strong>
+    {% if (n == 1) %}
+        <button class="btn btn-success"> BUY </button>
+    {% elif (n == -1) %}
+        <button class="btn btn-danger"> SELL </button>
+    {% else %}
+        <button class="btn btn-warning"> HOLD </button>
+    {% endif %}
+  </h1>
+
+    <div>
+        <canvas id="chart" width="1200" height="600"></canvas>
+        <script>
+          // bar chart data
+          var barData = {
+            labels : [
+              {% for item in labels %}
+                "{{ item | string }}",
+              {% endfor %}
+            ],
+            datasets : [{
+              fillColor: "rgba(151,187,205,0.2)",
+              strokeColor: "rgba(151,187,205,1)",
+              pointColor: "rgba(151,187,205,1)",
+              pointStrokeColor: "#fff",
+              pointHighlightFill: "#fff",
+              pointHighlightStroke: "rgba(151,187,205,1)",
+              bezierCurve : false,
+              data : [
+                {% for item in values %}
+                  {{ item }},
+                {% endfor %}
+              ]
+            }]
+          }
+          Chart.defaults.global.animationSteps = 50;
+          Chart.defaults.global.tooltipYPadding = 16;
+          Chart.defaults.global.tooltipCornerRadius = 0;
+          Chart.defaults.global.tooltipTitleFontStyle = "normal";
+          Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+          Chart.defaults.global.animationEasing = "easeOutBounce";
+          Chart.defaults.global.responsive = false;
+          Chart.defaults.global.scaleLineColor = "black";
+          Chart.defaults.global.scaleFontSize = 16;
+          // get bar chart canvas
+          var mychart = document.getElementById("chart").getContext("2d");
+          steps = 10
+          max = {{ max }}
+          // draw bar chart
+          var LineChartDemo = new Chart(mychart).Line(barData, {
+            scaleOverride: true,
+            scaleSteps: steps,
+            scaleStepWidth: Math.ceil(max / steps),
+            scaleStartValue: 0,
+            scaleShowVerticalLines: true,
+            scaleShowGridLines : true,
+            barShowStroke : true,
+            scaleShowLabels: true,
+            bezierCurve: false,
+            options: {
+                legend: {
+                    labels: {
+                        // This more specific font property overrides the global property
+                        fontSize: 6
+                    }
+                }
+            }
+          });
+        </script>
+    </div>
+
+    <div class="card" id="score">
+        <h3>Prediction accuracy : {{ score|round(2) }}&nbsp;&nbsp;&nbsp;&nbsp;
+            Sentiment score : News |
+            {% if (sentiment_news > 50) %}
+                <button class="btn btn-success"> {{ sentiment_news|round(2) }} </button>
+            {% elif (sentiment_news < 50) %}
+                <button class="btn btn-danger"> {{ sentiment_news|round(2) }} </button>
+            {% else %}
+                <button class="btn btn-warning"> {{ sentiment_news|round(2) }} </button>
+            {% endif %} Twitter |
+            {% if (sentiment_twitter > 50) %}
+                <button class="btn btn-success"> {{ sentiment_twitter|round(2) }} </button>
+            {% elif (sentiment_twitter < 50) %}
+                <button class="btn btn-danger"> {{ sentiment_twitter|round(2) }} </button>
+            {% else %}
+                <button class="btn btn-warning"> {{ sentiment_twitter|round(2) }} </button>
+            {% endif %}</h3>
+    </div>
+<!--
+  <h3> This is the end of my child template</h3>
+-->
+{% endblock %}

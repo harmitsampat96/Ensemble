@@ -1,0 +1,40 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ensemble</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+<h1>Stock Market GUI</h1>
+
+<form action="/test" method="POST">
+    <select name="stock">
+        <option selected="selected" value="BOB">BOB</option>
+        <option value="Colgate">Colgate</option>
+        <option value="NIFTY">NIFTY</option>
+        <option value="JSW">JSW</option>
+        <option value="Oracle">Oracle</option>
+        <option value="Bosch">Bosch</option>
+        <option value="REL">REL</option>
+    </select>
+    <input type="submit" value="submit">
+</form>
+
+</body>
+</html>-->
+
+{% extends "layout.html" %}
+{% block content %}
+<!--
+  <h3> This is the start of my child template</h3>
+-->
+  <br>
+    <div>
+        <h1>Select stock from search bar</h1>
+    </div>
+<!--
+  <h3> This is the end of my child template</h3>
+-->
+{% endblock %}

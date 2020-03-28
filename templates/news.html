@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<!--
+<h3> This is the start of my child template</h3>
+-->
+<div class="container" id="tweet">
+    <h1> <b>News</b> : {{ stock }}</h1>
+    {% for article in articles %}
+    <br>
+    <div class="card rounded">
+        <div class="card-title">
+            <b>{{ article['title'] | string}}</b>
+        </div>
+        <div class="card-body">
+            {{ article['description'] | string}}
+        </div>
+        <a href="{{ article['url'] }}" class="card-link">
+            {{ article['source'].name }} | read more
+        </a>
+    </div>
+    {% endfor %}
+</div>
+<!--
+<h3> This is the end of my child template</h3>
+-->
+{% endblock %}
