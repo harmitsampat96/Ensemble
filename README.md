@@ -1,11 +1,11 @@
 # Ensemble
 Dashboard web application for Stock Market Forecasting using Ensemble Learning techniques
 
-## Stock price prediction
+## Forecast
 ![Forecast](Forecast.png)
 
-## Viewing related news articles
+## News
 ![Tweets](Tweets.png)
 
-## Viewing relevant tweets
+## Tweets
 ![News](News.png)
