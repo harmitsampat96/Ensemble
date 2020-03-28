@@ -4,8 +4,8 @@ Dashboard web application for Stock Market Forecasting using Ensemble Learning t
 ## Forecast
 ![Forecast](Forecast.png)
 
-## News
+## Tweets
 ![Tweets](Tweets.png)
 
-## Tweets
+## News
 ![News](News.png)
