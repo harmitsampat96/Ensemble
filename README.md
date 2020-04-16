@@ -1,4 +1,4 @@
-# Ensemble
+# Stock Market Forecasting
 Dashboard web application for Stock Market Forecasting using Ensemble Learning techniques
 
 ## Forecast
